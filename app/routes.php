@@ -1,7 +1,7 @@
 <?php
 return [
     'GET' => [
-        '/'            => ['HomeController', 'index'],
+        '/'            => ['AuthController', 'showLogin'],
         '/login'       => ['AuthController', 'showLogin'],
         '/logout'      => ['AuthController', 'logout'],
         '/admin'       => ['AdminController', 'dashboard'],
