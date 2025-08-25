@@ -21,16 +21,17 @@ define('BASE_URL', $baseUrl);
 const CSRF_TOKEN_NAME = '_csrf';
 
 // Derived base path from BASE_URL
- $parsed = parse_url(BASE_URL, PHP_URL_PATH);
- if ($parsed === null) {
-     throw new Exception('Invalid BASE_URL');
- }
- $basePath = rtrim($parsed, '/') . '/';
- // expose BASE_PATH
- define('BASE_PATH', $basePath);
+$parsed = parse_url(BASE_URL, PHP_URL_PATH);
+if ($parsed === null) {
+    throw new Exception('Invalid BASE_URL');
+}
+$basePath = rtrim($parsed, '/') . '/';
+// expose BASE_PATH
+define('BASE_PATH', $basePath);
 
 // Helper to build absolute URLs
-function url(string $path = ''): string {
+function url(string $path = ''): string
+{
     return rtrim(BASE_URL, '/') . '/' . ltrim($path, '/');
 }
 

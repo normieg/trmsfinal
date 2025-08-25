@@ -11,7 +11,7 @@
     <link href="<?= url('assets/css/style.css'); ?>" rel="stylesheet">
 </head>
 
-<body class="d-flex align-items-center justify-content-center vh-100">
+<body class="d-flex align-items-center justify-content-center vh-100 p-0">
     <div class="w-100" style="max-width: 400px;">
         <?= $content ?>
     </div>
