@@ -1,29 +1,71 @@
-<?php
-$currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/';
-if (str_starts_with($currentPath, BASE_PATH)) {
-    $currentPath = substr($currentPath, strlen(BASE_PATH) - 1);
-}
-$currentPath = '/' . ltrim($currentPath, '/');
-?>
-<div class="offcanvas-body d-flex flex-column p-0">
-    <div class="p-3 border-bottom">
-        <strong>TRMS</strong>
-    </div>
+<!-- C:\xampp\htdocs\trmsfinal\app\views\partials\sidebar.php -->
+
+<nav id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white" style="width: 250px; min-height: 100vh; background-color: #001f3f;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fs-4">My Sidebar</span>
+    </a>
+    <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a class="nav-link <?= $currentPath === '/admin' ? 'active' : 'text-dark'; ?>" href="<?= url('admin'); ?>">Dashboard</a>
+            <a href="#" class="nav-link text-white active" aria-current="page">
+                Dashboard
+            </a>
         </li>
         <li>
-            <a class="nav-link text-dark" href="#">Trucks</a>
+            <a href="#" class="nav-link text-white">
+                Profile
+            </a>
         </li>
         <li>
-            <button class="btn btn-toggle align-items-center rounded w-100 text-start <?= str_starts_with($currentPath, '/admin/users') ? '' : 'collapsed'; ?>" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="<?= str_starts_with($currentPath, '/admin/users') ? 'true' : 'false'; ?>" aria-controls="users-collapse">Users</button>
-            <div class="collapse <?= str_starts_with($currentPath, '/admin/users') ? 'show' : ''; ?>" id="users-collapse">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a class="nav-link text-dark ps-4" href="#">Mechanic</a></li>
-                    <li><a class="nav-link <?= $currentPath === '/admin/users' ? 'active' : 'text-dark'; ?> ps-4" href="<?= url('admin/users'); ?>">Staff</a></li>
-                </ul>
-            </div>
+            <a href="#" class="nav-link text-white">
+                Reports
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
+                Settings
+            </a>
+        </li>
+        <li>
+            <a href="#" class="nav-link text-white">
+                Logout
+            </a>
         </li>
     </ul>
+    <hr>
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+            <strong>User</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser">
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Sidebar toggle button for mobile -->
+<button class="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+    ☰ Menu
+</button>
+
+<!-- Offcanvas Sidebar for Mobile -->
+<div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item"><a href="#" class="nav-link text-white">Dashboard</a></li>
+            <li><a href="#" class="nav-link text-white">Profile</a></li>
+            <li><a href="#" class="nav-link text-white">Reports</a></li>
+            <li><a href="#" class="nav-link text-white">Settings</a></li>
+            <li><a href="#" class="nav-link text-white">Logout</a></li>
+        </ul>
+    </div>
 </div>

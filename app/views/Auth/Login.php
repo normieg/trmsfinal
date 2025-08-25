@@ -1,5 +1,5 @@
 <?php if (!empty($error)): ?>
-<div class="alert alert-danger" role="alert"><?= $error ?></div>
+    <div class="alert alert-danger" role="alert"><?= $error ?></div>
 <?php endif; ?>
 <form method="post" action="<?= url('auth/login'); ?>">
     <div class="mb-3">

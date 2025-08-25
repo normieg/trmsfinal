@@ -8,10 +8,5 @@
             </div>
         </div>
     </div>
-    <div class="col-md-8">
-        <div class="alert alert-secondary" role="alert">
-            List of staff, filters, and actions will go here.
-        </div>
-        <a class="btn btn-primary" href="<?= url('admin/users'); ?>">View Users</a>
-    </div>
+
 </div>
