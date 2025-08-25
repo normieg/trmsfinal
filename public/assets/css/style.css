@@ -1,6 +1,22 @@
 body {
-  background-color: #f8f9fa;
   margin: 0;
+  background-color: #f8f9fa;
+}
+
+#sidebar {
+  width: 250px;
+}
+
+@media (min-width: 992px) {
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+  }
+  body {
+    padding-left: 250px;
+  }
 }
 
 .nav-link.active {
@@ -49,24 +65,17 @@ body {
   background: transparent;
   font-weight: 600;
   color: #212529;
+  display: flex;
+  align-items: center;
 }
 .btn-toggle:hover {
   background: rgba(13, 110, 253, 0.08);
 }
-
-/* Simple chevron indicator (no icon library required) */
-.btn-toggle .chev {
-  display: inline-block;
-  width: 0.65em;
-  height: 0.65em;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(45deg);
+.btn-toggle .bi {
   transition: transform 0.2s ease;
-  margin-left: 0.5rem;
 }
-.btn-toggle:not(.collapsed) .chev {
-  transform: rotate(225deg); /* down */
+.btn-toggle[aria-expanded="true"] .bi-chevron-right {
+  transform: rotate(90deg);
 }
 
 /* Optional dark mode if using Bootstrap's data-bs-theme="dark" */
