@@ -7,7 +7,7 @@ class AuthController extends Controller
     public function showLogin(): void
     {
         $error = isset($_GET['e']) ? htmlspecialchars((string)$_GET['e'], ENT_QUOTES, 'UTF-8') : '';
-        $this->view('Auth/Login', ['error' => $error], 'layouts/admin');
+        $this->view('Auth/Login', ['error' => $error], 'layouts/auth');
     }
 
     public function authenticate(): void
