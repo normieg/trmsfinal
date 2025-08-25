@@ -5,7 +5,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a href="<?= url('admin/dashboard'); ?>" class="nav-link">
+            <a href="<?= url('admin/dashboard'); ?>" class="nav-link<?= ($activePage ?? '') === 'dashboard' ? ' active' : '' ?>">
                 <i class="bi bi-speedometer2 me-2"></i>Dashboard
             </a>
         </li>
@@ -29,18 +29,20 @@
                 <i class="bi bi-gear me-2"></i>Settings
             </a>
         </li>
+        <?php $userSectionActive = in_array($activePage ?? '', ['staff', 'mechanics'], true); ?>
         <li class="mt-3">
-            <button class="btn btn-toggle align-items-center rounded collapsed w-100 text-start d-flex" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="true">
+            <button class="btn btn-toggle align-items-center rounded w-100 text-start d-flex<?= $userSectionActive ? '' : ' collapsed' ?>" data-bs-toggle="collapse" data-bs-target="#users-collapse" aria-expanded="<?= $userSectionActive ? 'true' : 'false' ?>">
                 <i class="bi bi-people me-2"></i>
                 <span class="flex-grow-1 text-start">Users</span>
                 <i class="bi bi-chevron-right ms-auto"></i>
             </button>
-            <div class="collapse show" id="users-collapse">
+            <div class="collapse<?= $userSectionActive ? ' show' : '' ?>" id="users-collapse">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-4">
-                    <li><a href="#" class="nav-link">Mechanics</a></li>
-                    <li><a href="#" class="nav-link active">Staff</a></li>
+                    <li><a href="#" class="nav-link<?= ($activePage ?? '') === 'mechanics' ? ' active' : '' ?>">Mechanics</a></li>
+                    <li><a href="#" class="nav-link<?= ($activePage ?? '') === 'staff' ? ' active' : '' ?>">Staff</a></li>
                 </ul>
             </div>
         </li>
     </ul>
 </nav>
+

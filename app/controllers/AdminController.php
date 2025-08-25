@@ -15,13 +15,19 @@ class AdminController extends Controller
     {
         $userModel = new User();
         $count = $userModel->countAll();
-        $this->view('Admin/Dashboard', ['userCount' => $count]);
+        $this->view('Admin/Dashboard', [
+            'userCount' => $count,
+            'activePage' => 'dashboard',
+        ]);
     }
 
     public function usersIndex(): void
     {
         $userModel = new User();
         $users = $userModel->all();
-        $this->view('Admin/UsersIndex', ['users' => $users]);
+        $this->view('Admin/UsersIndex', [
+            'users' => $users,
+            'activePage' => 'staff',
+        ]);
     }
 }
