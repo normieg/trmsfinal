@@ -10,8 +10,12 @@ const DB_PASS = '';
 const DB_NAME = 'trms';
 const DB_PORT = 3306;
 
-// Base URL
-const BASE_URL = 'http://localhost/trms/public/';
+// Base URL - dynamically determined so the app works from any directory
+$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host   = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$scriptDir = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
+$baseUrl = $scheme . '://' . $host . ($scriptDir === '' ? '' : $scriptDir) . '/';
+define('BASE_URL', $baseUrl);
 
 // CSRF token name
 const CSRF_TOKEN_NAME = '_csrf';
